@@ -1,0 +1,22 @@
+
+<card class="d-flex flex-grow" [title]="'Situação cadastral do CPF'" [desc]="'Consulta na Receita Federal'">
+    <div>
+        <div class="info-container">
+            <mat-icon class="card-icon">person</mat-icon>
+            <div class="card-info">
+                <small class="card-label">Nome</small>
+                <span>{{ user.name }}</span>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <mat-icon class="card-icon icon-regular" [ngClass]="{'icon-irregular': user.status === 'irregular'}">
+                {{ user.status === 'irregular' ? 'error' : 'check_circle' }}
+            </mat-icon>
+            <div class="card-info"> 
+                <small class="card-label">Situação do CPF</small>
+                <span>{{ user.status }}</span>
+            </div>
+        </div>
+    </div>
+</card>

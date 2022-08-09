@@ -1,0 +1,125 @@
+
+@import "../../../styles.scss";
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 250px;
+	background: $primary-color;
+	padding: 10px 0px;
+	transition: $tran-05;
+	z-index: 100;
+	overflow-x: hidden;
+	font-family: "Exo 2";
+    
+	.text {
+		font-size: 16px;
+		font-weight: 500;
+		color:  $text-color;
+		transition: $tran-03;
+		white-space: nowrap;
+		opacity: 1;
+	}
+
+	.text::first-letter{
+		text-transform: uppercase;
+	}
+
+	.header-container {
+		position: relative;
+
+		.image-container {
+			min-width: 60px;
+			display: flex;
+			align-items: center;
+			padding: 0 14px;
+		
+			.image {
+				width: 50px;
+    			margin: 0 6px;
+			}
+
+			.header-text {
+				font-family: "Exo 2";
+				display: flex;
+				flex-direction: column;
+				padding: 0 6px;
+
+				.name {
+					font-size: 40px;
+					text-transform: uppercase;
+					line-height: 50px;
+				}
+
+				.desc {
+					width: 140px;
+					white-space: break-spaces;
+					line-height: 10px;
+					font-size: 10px;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	
+    .nav-link {
+		height: 50px;
+		margin-top: 10px;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		padding: 0 11px;
+		cursor: pointer;
+
+		.search {
+			width: 160px;
+			outline: none;
+			border: none;
+		}
+	
+        .icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 60px;
+			font-size: 30px;
+			color:  $text-color;
+		}
+	
+        .text {
+			color:  $text-color;
+		}
+	
+        .link {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+		}
+	}
+
+	.nav-link {
+		&:hover {
+			background: $blue-ailos-120;
+			transition: $tran-03;
+		}
+	}
+
+}
+
+.sidebar.close {
+	width: 85px;
+	overflow: hidden;
+
+	.text {
+		opacity: 0;
+	}
+
+	.search {
+		opacity: 0;
+	}
+	
+}

@@ -1,0 +1,73 @@
+@import '../../../styles/variables.scss';
+
+.content {
+	background: $background;
+	width: 100%;
+	overflow-y: auto;
+	padding: 0.9rem 1.5rem;
+	flex-grow: 1;
+	font-family: "Exo 2";
+
+	.title {
+		font-weight: 600;
+		color: $black-ailos;
+	}
+
+	.info {
+		font-size: 12px;
+		color: $gray-4;
+	}
+
+    .section-form {
+		display: flex;
+		flex-direction: column;
+		margin: 0.5rem 0 1rem 0;
+        
+        .container-form {
+			display: flex;
+			align-items: end;
+			flex: 1;
+			justify-content: flex-start;
+
+            .container-field {
+				display: flex;
+				flex-direction: column;
+
+                .form-field {
+					width: 315px;
+					height: 30px;
+					border: 1px solid $black-ailos;
+					outline: none;
+                }
+
+				.form-error {
+					border-color: $critical-red;
+				}
+
+				.label-form {
+					font-weight: 600;
+					color: $black-ailos;
+				}
+
+            }
+			
+			// .btn-admission {
+			// 	margin: 0 16px;
+			// }
+        }
+    }
+
+	.card-container {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -8px;
+	}
+}
+
+.container-btn {
+	height: 11.5vh;
+	display: flex;
+	padding: 0 1.5rem;
+	align-items: center;
+	padding: 1.5rem;
+}

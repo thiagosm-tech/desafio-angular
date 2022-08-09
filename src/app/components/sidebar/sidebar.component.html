@@ -1,0 +1,34 @@
+<nav class="sidebar" [ngClass]="{'close': isClosedSideBar}">
+    <div class="header-container">
+        <div class="image-container">
+            <img class="image" src="../../../assets/images/logo-ailos.png" alt="logo ailos">
+            <div class="text header-text">
+                <span class="name">ailos</span>
+                <small class="desc">sistema de cooperativas de crédito</small>
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        <li class="nav-link">
+            <a href="javascript:void(0)" class="link" (click)="toogleSideBar()">
+                <i class='bx bx-menu icon'></i>
+            </a>
+        </li>
+        <li class="nav-link" [formGroup]="formSearch">
+            <mat-icon class="icon" fontIcon="search"></mat-icon>
+            <input  type="text" 
+                    class="search"
+                    placeholder="Buscar item"
+                    formControlName="search"
+                    (keyup)="setFilteredMenu()">
+        </li>
+        <li class="nav-link" *ngFor="let menu of filteredMenu">
+            <a [href]="menu.url" class="link">
+                <mat-icon class="icon">{{ menu.icon }}</mat-icon>
+                <span class="text">{{ menu.name }}</span>
+            </a>
+        </li>
+    </ul>
+
+</nav>

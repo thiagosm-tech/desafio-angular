@@ -1,0 +1,17 @@
+<card class="d-flex flex-grow" [title]="'Conta aplicação'" [desc]="'Consulta na Receita Federal'">
+    <div class="section-info">
+        <div class="info-container">
+            <mat-icon  class="card-icon">credit_card</mat-icon>
+            <div class="card-info">
+                <small class="card-label">Número da conta</small>
+                <span>{{ accountNumber }}</span>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="card-info">
+                <a class="link" href="javascript:void(0)" (click)="accountDuplicate.emit()">Duplicar conta</a>
+            </div>
+        </div>
+    </div>
+</card>

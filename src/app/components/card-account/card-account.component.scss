@@ -1,0 +1,37 @@
+@import '../../../styles/variables.scss';
+
+.section-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+
+    .card-info {
+        display: flex;
+        flex-direction: column;
+
+        .link {
+            color: $primary-color;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+
+    .info-container {
+        display: flex;
+        align-items: center;
+        margin: 0.5rem 0;
+
+        .card-icon {
+            font-size: 27px;
+            width: 40px;
+            color: $gray-4;
+        }
+
+    }
+    
+    .card-label {
+        color: $gray-4;
+        font-weight: 600;
+    }
+}

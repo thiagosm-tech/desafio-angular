@@ -1,0 +1,7 @@
+<div class="d-flex">
+    <sidebar (onClose)="getStatusSidebar($event)"></sidebar>
+    <section class="home" [ngClass]="{'sidebar-close': statusSidebar}">
+        <header></header>
+        <admission class="content"></admission>
+    </section>
+</div>

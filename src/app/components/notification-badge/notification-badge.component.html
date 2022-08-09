@@ -1,0 +1,4 @@
+<div class="notification">
+    <mat-icon class="icon">notifications_none</mat-icon>
+    <div class="counter-notification" *ngIf="notification">{{ notification <= 100 ? notification : '99+' }}</div>
+</div>

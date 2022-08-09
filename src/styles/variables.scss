@@ -1,0 +1,45 @@
+$blue-ailos-140: #012F44;
+$blue-ailos-120: #013F5C;
+$blue-ailos-100: #165C7D;
+$blue-ailos-80: #457D97;
+$blue-ailos-60: #739DB1;
+$blue-ailos-40: #A2BECB;
+$blue-ailos-20: #D0DEE5;
+
+$orange-ailos-120: #C37D00;
+$orange-ailos-100: #FFA300;
+$orange-ailos-80: #FFB533;
+$orange-ailos-60: #FFC866;
+$orange-ailos-40: #FFDA99;
+$orange-ailos-20: #FFEDCC;
+
+$primary-color: $blue-ailos-100;
+$secondary-color: $orange-ailos-100;
+
+/* Complementary */
+$light-blue-ailos: #009ED0;
+$green-ailos: #00C246;
+$ailos-intermediate-blue: #007D8A;
+
+/* Criticality scale */
+$critical-red: #C13018;
+$critical-orange: #FFA300;
+$critical-yellow: #FCD610;
+$critical-green: $green-ailos;
+$critical-blue: $light-blue-ailos;
+
+/* Grey scale */ 
+$black-ailos: #040F14;
+$gray-4: #889499;
+$gray-3: #A7B0B5;
+$gray-2: #C6CED1;
+$gray-1: #E7EEF1;
+
+$background: #E8EFF2;
+$white: #fff;
+$text-color: #fff;
+
+$tran-02: all 0.2s ease;
+$tran-03: all 0.3s ease;
+$tran-04: all 0.4s ease;
+$tran-05: all 0.5s ease;
