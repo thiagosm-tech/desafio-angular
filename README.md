@@ -19,7 +19,7 @@ Através de uma api desenvolvida em NodeJs, este projeto consulta os dados do co
 - Lint
 
 ### Improvements
-- Adicionar internacionalização utilizando a lib i18next
+- Adicionar internacionalização utilizando a lib angular-i18next
 
 
 ### Web
