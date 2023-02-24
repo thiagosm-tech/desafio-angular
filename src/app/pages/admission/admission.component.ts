@@ -34,14 +34,11 @@ export class AdmissionComponent implements OnInit {
 
   getUser(cpf?: string) {
     let formCooperadoInvalid = this.formCooperado.invalid
-    console.log('teste 1')
     if (formCooperadoInvalid)
       return
     
-    console.log('teste 2')
 
     let userCpf = cpf || this.formCooperado.get('cpf')?.value;
-    console.log('teste 3')
     this.userService.getUser(userCpf).pipe(
       map((res: any) => {
         this.user = res.user;

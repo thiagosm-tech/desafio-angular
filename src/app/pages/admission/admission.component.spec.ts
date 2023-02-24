@@ -55,7 +55,6 @@ describe('AdmissionComponent', () => {
     });
 
     it('should getUser method calls the UserServices getUser method', () => {
-        console.log('---------------------------------------------------------------------------')
         component.formCooperado.controls['cpf'].setValue('134.200.510-42');
         userService.getUser.and.returnValue(of({ user: {} }));
         component.getUser('111.111.111-11');
