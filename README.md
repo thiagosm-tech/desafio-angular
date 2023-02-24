@@ -14,7 +14,9 @@ Através de uma api desenvolvida em NodeJs, este projeto consulta os dados do co
 
 ### Features
 - Docker
-- WIP Lint
+- Teste Unitário
+- Cobertura 100%
+- Lint
 
 ### Improvements
 - Adicionar internacionalização utilizando a lib i18next
