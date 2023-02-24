@@ -15,7 +15,7 @@ Através de uma api desenvolvida em NodeJs, este projeto consulta os dados do co
 ### Features
 - Docker
 - Teste Unitário
-- Cobertura 100%
+  - Cobertura 100%
 - Lint
 
 ### Improvements
