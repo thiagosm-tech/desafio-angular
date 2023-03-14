@@ -9,7 +9,7 @@
     
     .section-progress-bar {
         counter-reset: step;
-        width: 60%;
+        min-width: 60%;
         display: flex;
     
         .step {

@@ -34,9 +34,9 @@ export class AdmissionComponent implements OnInit {
 
   getUser(cpf?: string) {
     let formCooperadoInvalid = this.formCooperado.invalid
-
     if (formCooperadoInvalid)
       return
+    
 
     let userCpf = cpf || this.formCooperado.get('cpf')?.value;
     this.userService.getUser(userCpf).subscribe((res: any) => {
