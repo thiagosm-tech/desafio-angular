@@ -17,7 +17,7 @@ const CPF_MASK = "000.000.000-00";
 export class AdmissionComponent implements OnInit {
 
   formCooperado = this.fb.group({
-    cpf: [null, [Validators.required, this.checkCPF]]
+    cpf: ['', [Validators.required, this.checkCPF]]
   });
 
   cpfMask = CPF_MASK;
@@ -39,11 +39,9 @@ export class AdmissionComponent implements OnInit {
       return
 
     let userCpf = cpf || this.formCooperado.get('cpf')?.value;
-    this.userService.getUser(userCpf).pipe(
-      map((res: any) => {
-        this.user = res.user;
-      })
-    ).subscribe();
+    this.userService.getUser(userCpf).subscribe((res: any) => {
+      this.user = res.user;
+    });
   }
 
   accountDuplicate(accountNumber: any, cpf: string) {
