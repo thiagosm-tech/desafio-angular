@@ -2,10 +2,7 @@ version: '3'
 
 services:
   desafio-angular:
-    image: nginx:latest
-    container_name: desafio-angular
-    volumes:
-    - ./docker/config/nginx/conf.d:/etc/nginx/conf.d
-    - ./dist/desafio-angular:/usr/share/nginx/html
+    image: desafio-angular
+    build: .
     ports:
-     - 4200:80
+     - 8081:80
