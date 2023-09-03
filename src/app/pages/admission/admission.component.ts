@@ -24,6 +24,9 @@ export class AdmissionComponent implements OnInit {
   user!: User;
   userNotFound!: any;
 
+  stepList = ['Ínicio', 'Documentos', 'Dados cadastrais', 'Admissão'];
+  currentStep = 0;
+
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
@@ -32,11 +35,12 @@ export class AdmissionComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // Adicionar uma action do ngrx para esse metodo
   getUser(cpf?: string) {
     let formCooperadoInvalid = this.formCooperado.invalid
     if (formCooperadoInvalid)
       return
-    
+
 
     let userCpf = cpf || this.formCooperado.get('cpf')?.value;
     this.userService.getUser(userCpf).subscribe((res: any) => {
@@ -44,6 +48,8 @@ export class AdmissionComponent implements OnInit {
     });
   }
 
+  // Melhorar o nome da variavel, a variavel duplica a conta
+  // Trocar para uma action do ngrx
   accountDuplicate(accountNumber: any, cpf: string) {
     let body: Account = accountNumber;
 
@@ -51,7 +57,7 @@ export class AdmissionComponent implements OnInit {
       map((res: any) => res.success && this.getUser(cpf))
     ).subscribe();
   }
-
+  // Criar um serviço para armazenar esse metodo, salvar na pasta service
   checkCPF(control: FormControl) {
     const cpfValue = cpf.format(control.value);
     return cpf.isValid(cpfValue) ? null : { cpfInvalid: !cpf.isValid(cpfValue) };
