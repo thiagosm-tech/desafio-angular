@@ -1,27 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { LoaderService } from '../../services/loader.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'btn-submit',
   templateUrl: './btn-submit.component.html',
   styleUrls: ['./btn-submit.component.scss']
 })
-export class BtnSubmitComponent implements OnInit {
+export class BtnSubmitComponent {
 
-  isLoading = false;
-  isLoading$!: Observable<any>;
+  @Input() isLoading = false;
 
-  constructor(private loaderService: LoaderService) { }
-
-  ngOnInit(): void {
-    this.getIsLoading();
-
-  }
-
-  getIsLoading() {
-    this.isLoading$ = this.loaderService.loading$.pipe(
-      map(res => this.isLoading = res)
-    );
-  }
 }

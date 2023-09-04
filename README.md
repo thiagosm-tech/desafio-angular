@@ -20,7 +20,6 @@ Através de uma api desenvolvida em NodeJs, este projeto consulta os dados do co
 
 ### Improvements
 - Adicionar internacionalização utilizando a lib angular-i18next
-- Implementar o gerenciamento de estado com o NGRX
 
 ### Web
 ![image](https://user-images.githubusercontent.com/72469281/183529065-e6f8d840-5e93-4891-babe-f1c78fe6039b.png)
