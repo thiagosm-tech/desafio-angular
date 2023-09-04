@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable, map } from 'rxjs';
 
-import { cpf } from 'cpf-cnpj-validator';
-import { Account, User } from '../../models/user.model'
-import { UserService } from 'src/app/services/user.service';
-import { map } from 'rxjs';
-import { AccountService } from '../../services/account.service';
+import { Account, User } from '../../models/user.model';
+import { AppState } from 'src/app/store/app.state';
+import * as AdmissionActions from '../../store/admission/admission.actions';
+import { CpfValidationService } from 'src/app/services/cpf-validation.service';
 
 const CPF_MASK = "000.000.000-00";
 
@@ -17,43 +18,50 @@ const CPF_MASK = "000.000.000-00";
 export class AdmissionComponent implements OnInit {
 
   formCooperado = this.fb.group({
-    cpf: ['', [Validators.required, this.checkCPF]]
+    cpf: ['', [Validators.required, this.cpfValidationService.validateCpf]]
   });
 
   cpfMask = CPF_MASK;
-  user!: User;
-  userNotFound!: any;
+  user$!: Observable<User>
+  haveUser: boolean = false;
+  isLoading: boolean = false;
+
+  stepList = ['Ínicio', 'Documentos', 'Dados cadastrais', 'Admissão'];
+  currentStep = 0;
 
   constructor(
-    private userService: UserService,
     private fb: FormBuilder,
-    private accountService: AccountService
+    private cpfValidationService: CpfValidationService,
+    private store: Store<AppState>
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.initializeUserStatus();
+  }
+
+  initializeUserStatus() {
+    this.user$ = this.store.select(state => state.user).pipe(
+      map(res => {
+        this.isLoading = res.isLoading;
+        if (res.name != '' && res.cpf) {
+          this.haveUser = true;
+        }
+
+        return res;
+      })
+    );
+  }
 
   getUser(cpf?: string) {
-    let formCooperadoInvalid = this.formCooperado.invalid
-    if (formCooperadoInvalid)
+    if (this.formCooperado.get('cpf')?.invalid)
       return
-    
 
-    let userCpf = cpf || this.formCooperado.get('cpf')?.value;
-    this.userService.getUser(userCpf).subscribe((res: any) => {
-      this.user = res.user;
-    });
+    const userCpf = cpf || this.formCooperado.get('cpf')?.value;
+    this.store.dispatch(AdmissionActions.consultUser({ query: userCpf }));
   }
 
-  accountDuplicate(accountNumber: any, cpf: string) {
+  duplicateAccount(accountNumber: any, cpf: string) {
     let body: Account = accountNumber;
-
-    this.accountService.duplicateAccount(body, cpf).pipe(
-      map((res: any) => res.success && this.getUser(cpf))
-    ).subscribe();
-  }
-
-  checkCPF(control: FormControl) {
-    const cpfValue = cpf.format(control.value);
-    return cpf.isValid(cpfValue) ? null : { cpfInvalid: !cpf.isValid(cpfValue) };
+    this.store.dispatch(AdmissionActions.duplicateAccount({ query: { body, cpf } }));
   }
 }

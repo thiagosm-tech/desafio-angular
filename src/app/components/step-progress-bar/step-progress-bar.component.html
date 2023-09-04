@@ -1,8 +1,9 @@
 <div class="step-progress-bar">
   <ul class="section-progress-bar">
-    <li class="step active">Início</li>
-    <li class="step">Documentos</li>
-    <li class="step">Dados cadastrais</li>
-    <li class="step">Admissão</li>
+    <li class="step"
+        *ngFor="let step of stepList; let i = index"
+        [ngClass]="{'active': currentStep >= i}">
+        {{ step }}
+    </li>
   </ul>
 </div>

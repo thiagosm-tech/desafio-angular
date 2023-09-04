@@ -1,10 +1,10 @@
 <div class="content d-flex flex-column">
-    <step-progress-bar></step-progress-bar>
+    <step-progress-bar [stepList]="stepList" [currentStep]="currentStep"></step-progress-bar>
     <div>
         <div class="section-text d-flex flex-column">
             <h4 class="title">Informe o CPF do futuro cooperado (a)</h4>
             <span class="info">
-                Se necessario você poderá duplicar uma conta existente ou pausar e 
+                Se necessario você poderá duplicar uma conta existente ou pausar e
                 retomar esse cadastro futuramente
             </span>
             <span class="info">
@@ -15,8 +15,8 @@
             <form class="container-form" [formGroup]="formCooperado" (submit)="getUser()">
                 <div class="container-field">
                     <label class="label-form" for="CPF cooperado">CPF</label>
-                    <input  type="text" 
-                            name="CPF cooperado" 
+                    <input  type="text"
+                            name="CPF cooperado"
                             class="form-field"
                             formControlName="cpf"
                             placeholder="000.000.000-00"
@@ -24,22 +24,22 @@
                             [dropSpecialCharacters]="false"
                             [mask]="cpfMask">
                 </div>
-                <btn-submit>Consultar por CPF</btn-submit>
+                <btn-submit [isLoading]="isLoading">Consultar por CPF</btn-submit>
             </form>
             <small class="text-danger" *ngIf="formCooperado.touched && formCooperado.invalid">Informe um CPF válido</small>
         </div>
-        <div class="card-container" *ngIf="user">
-            <card-user [user]="user"></card-user>
-            <card-account   *ngFor="let account of user?.account" 
+        <div class="card-container" *ngIf="user$ | async as user">
+            <card-user *ngIf="user.name != '' && user.cpf" [user]="user"></card-user>
+            <card-account   *ngFor="let account of user?.account"
                             class="d-flex"
                             [accountNumber]="account.accountNumber"
-                            (accountDuplicate)="accountDuplicate(account, user.cpf)">
+                            (accountDuplicate)="duplicateAccount(account, user.cpf)">
             </card-account>
         </div>
     </div>
 </div>
 
 <div class="container-btn">
-    <button class="btn-ailos btn-ailos-primary btn-margin" *ngIf="user">Iniciar nova admissão</button>
+    <button class="btn-ailos btn-ailos-primary btn-margin" *ngIf="haveUser">Iniciar nova admissão</button>
     <button class="btn-ailos btn-ailos-secondary btn-margin">Dicas para admissão</button>
 </div>
